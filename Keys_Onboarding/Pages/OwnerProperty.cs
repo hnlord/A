@@ -202,13 +202,13 @@ namespace Keys_Onboarding
 
                 //Verification
                 //property name after edit
-
-                bool isPropertyModified = Driver.driver.PageSource.Contains(PropertyName_BeforeEdit);
-                Assert.IsTrue(!isPropertyModified);
+                string PropertyName_AfterEdit = Driver.driver.FindElement(By.XPath("//*[@id='main-content']/section/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div[1]/a/h3")).Text;
+                bool isPropertyModified = Driver.driver.PageSource.Contains(PropertyName_AfterEdit);
+                Assert.IsTrue(isPropertyModified);
 
                 SaveScreenShotClass.SaveScreenshot(Driver.driver, "Edit");
 
-                string PropertyName_AfterEdit = Driver.driver.FindElement(By.XPath("//*[@id='main-content']/section/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div[1]/a/h3")).Text;
+                
 
                 string logSuccess = "";
                 string logUnsuccess = "";
