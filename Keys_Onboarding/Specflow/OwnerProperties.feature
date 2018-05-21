@@ -25,3 +25,8 @@ Scenario: BDD_Edit a property by searching address
 Scenario: BDD_Edit a property from Excel Data
 	Given A user have logged into the My properties page	
 	Then User edit a property from Excel data should be successfully
+
+@Add from Excel Data
+Scenario: BDD_Add a property from Excel Data
+	Given user have logged into the My properties page successfully	
+	Then User add a property from Excel data should be successfully

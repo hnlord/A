@@ -3,12 +3,9 @@ using Keys_Onboarding.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using RelevantCodes.ExtentReports;
 using System;
-using System.Diagnostics;
 using System.Threading;
 using static Keys_Onboarding.Global.CommonMethods;
-
 
 namespace Keys_Onboarding
 {
@@ -98,11 +95,15 @@ namespace Keys_Onboarding
 
                 //Verification
                 string ExpectedValue = "TestingProperty";
+                Assert.IsTrue(Driver.driver.PageSource.Contains(ExpectedValue));
+
+                SaveScreenShotClass.SaveScreenshot(Driver.driver, "Search");
+
                 string ActualValue = Driver.driver.FindElement(By.XPath("//*[@id='main-content']/section/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div[1]/a/h3")).Text;
                 
 
                 //Assert.AreEqual(ExpectedValue, ActualValue);
-                Assert.IsTrue(Driver.driver.PageSource.Contains(ExpectedValue));
+               
 
                 if (ActualValue == ExpectedValue)
                                     
@@ -145,6 +146,12 @@ namespace Keys_Onboarding
                 Thread.Sleep(2000);
 
                 //Verification
+                
+                bool isPropertyDeleted = Driver.driver.PageSource.Contains(PropertyName_BeforeDelete);
+                Assert.IsTrue(!isPropertyDeleted);
+
+                SaveScreenShotClass.SaveScreenshot(Driver.driver, "Delete");
+
                 //property name after delete
                 string PropertyName_AfterDelete = Driver.driver.FindElement(By.XPath("//*[@id='main-content']/section/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div[1]/a/h3")).Text;
                 if (PropertyName_AfterDelete != PropertyName_BeforeDelete)
@@ -195,10 +202,17 @@ namespace Keys_Onboarding
 
                 //Verification
                 //property name after edit
+
+                bool isPropertyModified = Driver.driver.PageSource.Contains(PropertyName_BeforeEdit);
+                Assert.IsTrue(!isPropertyModified);
+
+                SaveScreenShotClass.SaveScreenshot(Driver.driver, "Edit");
+
                 string PropertyName_AfterEdit = Driver.driver.FindElement(By.XPath("//*[@id='main-content']/section/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div[1]/a/h3")).Text;
 
                 string logSuccess = "";
                 string logUnsuccess = "";
+
                 if (TestCaseCode == "TC_027_01")
                 {
                     logSuccess = "Test Passed, Edit a property from excel data successfull";
@@ -252,7 +266,9 @@ namespace Keys_Onboarding
                 string ExpectedValue = "Mortgage";
                 bool isFinancePage = Driver.driver.PageSource.Contains(ExpectedValue);
                 Assert.IsTrue(isFinancePage);
-                
+
+                SaveScreenShotClass.SaveScreenshot(Driver.driver, "Add Property Details");
+
                 if (isFinancePage)
 
                     Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass, "Test Passed, Add property successfull");
@@ -270,6 +286,8 @@ namespace Keys_Onboarding
                 string ExpectedValue1 = "Tenant Details";
                 bool isTenantPage = Driver.driver.PageSource.Contains(ExpectedValue1);
                 Assert.IsTrue(isTenantPage);
+
+                SaveScreenShotClass.SaveScreenshot(Driver.driver, "Add finance Details");
 
                 if (isTenantPage)
 
@@ -289,6 +307,8 @@ namespace Keys_Onboarding
                 string ExpectedValue2 = "BHouse";
                 bool isPropertyAdded = Driver.driver.PageSource.Contains(ExpectedValue2);
                 Assert.IsTrue(isPropertyAdded);
+
+                SaveScreenShotClass.SaveScreenshot(Driver.driver, "Add a property successfully");
 
                 if (isPropertyAdded)
 

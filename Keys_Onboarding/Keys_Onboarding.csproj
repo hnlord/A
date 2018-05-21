@@ -108,6 +108,7 @@
     <Compile Include="Pages\OwnerProperty.cs" />
     <Compile Include="Pages\RemoveProperty.cs" />
     <Compile Include="Pages\TenantDetails.cs" />
+    <Compile Include="Specflow\PO_AddFromExcelDataSteps.cs" />
     <Compile Include="Specflow\PO_EditBySeachSteps.cs" />
     <Compile Include="Specflow\PO_DeleteSteps.cs" />
     <Compile Include="Specflow\OwnerProperties.feature.cs">

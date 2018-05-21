@@ -167,6 +167,29 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("BDD_Add a property from Excel Data")]
+        [NUnit.Framework.CategoryAttribute("Add")]
+        [NUnit.Framework.CategoryAttribute("from")]
+        [NUnit.Framework.CategoryAttribute("Excel")]
+        [NUnit.Framework.CategoryAttribute("Data")]
+        public virtual void BDD_AddAPropertyFromExcelData()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("BDD_Add a property from Excel Data", new string[] {
+                        "Add",
+                        "from",
+                        "Excel",
+                        "Data"});
+#line 30
+this.ScenarioSetup(scenarioInfo);
+#line 31
+ testRunner.Given("user have logged into the My properties page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 32
+ testRunner.Then("User add a property from Excel data should be successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
